@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!--Main layout-->
+<main class="mt-6 pt-4">
+    <div class="container mt-5">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+                <img src="{{ object.gambar.url }}" class="img-fluid" alt="" />
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+                <!--Content-->
+                <div class="p-1">
+                    <div class="mb-3">
+                        <strong><p style="font-size: 30px;">{{ object.nama_produk }}</p></strong>
+                        <a href="">
+                            <span class="badge bg-dark me-1">{{ object.get_kategori_display }}</span>
+                        </a>
+                        {% if object.label == 'NEW' %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">New</span>
+                        </a>
+                        {% elif object.label == 'SALE' %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">Sale</span>
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">Bestseller</span>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <p class="lead">
+                        {% if object.harga_diskon %}
+                        <span class="me-1">
+                            <del>$ {{ object.harga }}</del>
+                        </span>
+                        <span>$ {{ object.harga_diskon }}</span>
+                        {% else %}
+                        <span>$ {{ object.harga }}</span>
+                        {% endif %}
+                    </p>
+
+                    <strong><p style="font-size: 20px;">Deskripsi</p></strong>
+
+                    <p>{{ object.deskripsi }}</p>
+                    <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary ms-1">
+                        Add to cart
+                        <i class="fas fa-shopping-cart ms-1"></i>
+                    </a>
+                    <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger ms-1" >
+                        <i class="fas fa-trash-can ms-1"></i>
+                    </a>
+                </div>
+                <!--Content-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+        <hr />
+
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content%}
