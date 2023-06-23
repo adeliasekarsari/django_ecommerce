@@ -15,7 +15,7 @@ Dokumentasi penggunaan script e-commerce dengan django
 6. Membuat akun admin dengan `python manage.py createsuperuser`
 7. Perintah untuk menjalankan script `python manage.py runserver`
 
-### cybersecurity
+### Cybersecurity
 Dalam e-commerce ini juga ditambahkan aspek cybersecurity
 * SQL Injection
 ```code
